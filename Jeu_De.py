@@ -5,7 +5,10 @@ from PIL import ImageTk, Image
 
 #les fonction
 def jouer_de():
-    pass
+    image_choisie = random.choice(liste_images)
+    image1 = ImageTk.PhotoImage(Image.open(image_choisie))
+    label_image.configure(image=image1)
+    label_image.image = image1
 
 
 jeu = Tk()
@@ -31,11 +34,11 @@ label_image.image = image_de
 label_image.grid(column=1, row=3, columnspan=2)
 
 # Boutton pour lancer le jeu
-bouton_lancer = Button(jeu, text="Lance De", fg="yellow",bg="black", width=15, height=3,command= jouer_de)
+bouton_lancer = Button(jeu, text="Lance De", fg="yellow",bg="black", width=15, height=3,command= jouer_de,cursor="hand2")
 bouton_lancer.grid(column=1, row=4,padx=10, pady=10)
 
 # Boutton pour quitter le jeu
-bouton_lancer = Button(jeu, text="Quitter", fg="white",bg="red", width=15, height=3,command=jeu.quit)
+bouton_lancer = Button(jeu, text="Quitter", fg="white",bg="red", width=15, height=3,command=jeu.quit, cursor="hand2")
 bouton_lancer.grid(column=2, row=4,padx=10, pady=10)
 
 #Pour afficher le resultat
