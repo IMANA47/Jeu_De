@@ -1,5 +1,7 @@
 import random
 from tkinter import *
+from tkinter import messagebox
+
 from PIL import ImageTk, Image
 
 
@@ -24,11 +26,15 @@ def jouer_de():
     else:
         numero_sortie = 6
 
-    if numero_sortie != int(numero_choisi.get()):
-        label_resultat.config(text="Oups domage vous avez perdu !!")
+    if numero_choisi.get() !="":
+        if int(numero_choisi.get()) < 1 or int(numero_choisi.get()) > 6:
+            messagebox.showerror("Erreurs", "Veuillez entre uniquement un nombbre entre 1 et 6")
+        elif numero_sortie != int(numero_choisi.get()):
+            label_resultat.config(text="Oups domage vous avez perdu !!")
+        else:
+            label_resultat.config(text="Félicitation vous avez gagné")
     else:
-        label_resultat.config(text="Félicitation vous avez gagné")
-
+        messagebox.showerror("Erreurs", "Veuillez entre uniquement un nombbre entre 1 et 6")
 
 
 jeu = Tk()
